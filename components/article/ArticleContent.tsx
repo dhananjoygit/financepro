@@ -12,7 +12,9 @@ export default function ArticleContent({
         {description}
       </p>
 
-      <h2>Understanding the Bigger Picture</h2>
+      <h2 id="understanding-the-bigger-picture">
+        Understanding the Bigger Picture
+      </h2>
 
       <p>
         Financial decisions affect every aspect of daily life, from saving
@@ -26,7 +28,9 @@ export default function ArticleContent({
         essential for long term financial success.
       </p>
 
-      <h2>Why It Matters</h2>
+      <h2 id="why-it-matters">
+        Why It Matters
+      </h2>
 
       <p>
         Reliable financial information allows people to build wealth,
@@ -37,7 +41,9 @@ export default function ArticleContent({
         Smart financial decisions begin with reliable information.
       </blockquote>
 
-      <h2>Conclusion</h2>
+      <h2 id="conclusion">
+        Conclusion
+      </h2>
 
       <p>
         Continue learning, stay informed and always make investment
