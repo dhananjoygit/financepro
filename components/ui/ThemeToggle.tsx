@@ -14,12 +14,12 @@ function useMounted() {
 export default function ThemeToggle() {
   const mounted = useMounted();
 
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   if (!mounted) {
     return (
-      <button className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-semibold">
-        Theme
+      <button className="rounded-xl border border-slate-300 px-4 py-2">
+        🌙
       </button>
     );
   }
@@ -27,11 +27,11 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() =>
-        setTheme(theme === "dark" ? "light" : "dark")
+        setTheme(resolvedTheme === "dark" ? "light" : "dark")
       }
-      className="rounded-xl border border-slate-300 bg-white px-4 py-2 font-semibold transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700"
+      className="rounded-xl border border-slate-300 bg-white px-4 py-2 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800"
     >
-      {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
+      {resolvedTheme === "dark" ? "☀️" : "🌙"}
     </button>
   );
 }

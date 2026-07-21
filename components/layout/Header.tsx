@@ -1,48 +1,62 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { navigation } from "@/data/navigation";
-
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-900/90">
+    <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-
+        {/* Logo */}
         <Link
           href="/"
-          className="text-2xl font-black tracking-tight text-slate-900 dark:text-white"
+          className="text-3xl font-black tracking-tight text-white"
         >
           FinancePro
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* Navigation */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {navigation.map((item) => {
+            const active = pathname === item.href;
 
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="font-medium text-slate-700 transition hover:text-blue-600 dark:text-slate-300"
-            >
-              {item.name}
-            </Link>
-          ))}
-
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={
+                  active
+                    ? "text-blue-400 font-semibold"
+                    : "text-white font-medium transition hover:text-blue-400"
+                }
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        {/* Right Side */}
+        <div className="flex items-center gap-4">
 
-          <button className="rounded-xl border border-slate-300 bg-white px-5 py-2 font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white">
-            Search
-          </button>
+          <Link
+            href="/search"
+            className="rounded-xl border border-slate-700 bg-slate-900 px-5 py-2 font-medium text-white transition hover:border-blue-500 hover:bg-slate-800"
+          >
+            🔍 Search
+          </Link>
 
           <ThemeToggle />
 
         </div>
 
       </div>
-
     </header>
   );
 }
